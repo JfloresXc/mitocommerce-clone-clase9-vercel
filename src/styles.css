@@ -1,3 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
 
-@import 'tailwindcss';
+/* MitoPets - Custom Reusable Utility Classes using Tailwind CSS v4 */
+
+.btn-primary {
+  @apply bg-amber-400 hover:bg-amber-500 active:scale-95 text-amber-950 font-bold px-5 py-3 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-amber-400/20 inline-flex items-center justify-center gap-2 select-none cursor-pointer;
+}
+
+.btn-secondary {
+  @apply bg-zinc-900 hover:bg-zinc-800 active:scale-95 text-amber-400 font-semibold px-5 py-3 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2 select-none cursor-pointer;
+}
+
+.btn-outline {
+  @apply border border-zinc-200 hover:border-amber-400 hover:bg-amber-50/30 text-zinc-700 hover:text-amber-900 font-medium px-4 py-2.5 rounded-xl transition-all duration-200 active:scale-95 inline-flex items-center justify-center gap-2 select-none cursor-pointer;
+}
+
+.btn-icon {
+  @apply relative p-2.5 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 active:scale-90 rounded-full transition-all duration-200 inline-flex items-center justify-center cursor-pointer;
+}
+
+.glass-panel {
+  @apply bg-white/85 backdrop-blur-md border border-white/40 shadow-xl;
+}
+
+.product-card {
+  @apply bg-white border border-zinc-100 rounded-3xl p-4 transition-all duration-300 hover:shadow-xl hover:shadow-zinc-200/50 hover:border-zinc-200/80 flex flex-col justify-between;
+}
+
+.product-image-container {
+  @apply relative w-full aspect-square bg-zinc-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center;
+}
+
+.coupon-card {
+  @apply relative bg-amber-50/50 border-2 border-dashed border-amber-300 hover:border-amber-400 rounded-2xl p-5 transition-all duration-300 hover:shadow-lg hover:shadow-amber-100/50 flex flex-col justify-between select-none cursor-pointer overflow-hidden;
+}
+
+.badge-amber {
+  @apply bg-amber-100 text-amber-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1;
+}
+
+.badge-zinc {
+  @apply bg-zinc-100 text-zinc-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1;
+}
+
+/* Modal and Drawer Animations */
+.modal-backdrop {
+  @apply fixed inset-0 bg-zinc-950/60 backdrop-blur-md z-50 transition-opacity duration-300;
+}
+
+.modal-container {
+  @apply fixed inset-x-4 top-[15%] md:top-[20%] max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl border border-zinc-100 z-55 overflow-hidden transition-all duration-300 transform scale-100;
+}
+
+.drawer-backdrop {
+  @apply fixed inset-0 bg-zinc-950/50 backdrop-blur-sm z-50 transition-opacity duration-300;
+}
+
+.drawer-container {
+  @apply fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl border-l border-zinc-100 z-55 flex flex-col transition-all duration-300 transform translate-x-0;
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-zinc-200 rounded-full hover:bg-zinc-300;
+}

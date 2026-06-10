@@ -1,0 +1,87 @@
+<header class="fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur-md border-b border-zinc-100 z-40 select-none">
+  <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+    
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 flex-shrink-0 group">
+      <div class="h-10 w-10 rounded-xl bg-amber-400 flex items-center justify-between p-2 shadow-sm shadow-amber-400/30 group-hover:scale-105 transition-transform duration-200">
+        <!-- Paw Icon SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full h-full text-amber-950">
+          <path d="M12 14c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-4.5-2c.83 0 1.5-.67 1.5-1.5S8.33 9 7.5 9 6 9.67 6 10.5S6.67 12 7.5 12zm9 0c.83 0 1.5-.67 1.5-1.5S17.33 9 16.5 9s-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-11-4.5c.83 0 1.5-.67 1.5-1.5S10.33 4.5 9.5 4.5 8 5.17 8 6s.67 1.5 1.5 1.5zm9 0c.83 0 1.5-.67 1.5-1.5S14.33 4.5 13.5 4.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/>
+          <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm3.87 16.71c-.77.77-2.03.77-2.8 0l-.36-.36c-.45-.45-1.19-.45-1.64 0l-.36.36c-.77.77-2.03.77-2.8 0-1.25-1.25-1.22-3.32.08-4.54 1.3-1.22 3.38-1.22 4.68 0l.44.44.44-.44c1.3-1.22 3.38-1.22 4.68 0 1.3 1.22 1.33 3.29.08 4.54z"/>
+        </svg>
+      </div>
+      <span class="text-xl font-black tracking-tight text-zinc-900 group-hover:text-amber-500 transition-colors duration-200">
+        Mito<span class="text-amber-500 group-hover:text-zinc-900 transition-colors duration-200">Pets</span>
+      </span>
+    </a>
+
+    <!-- Barra de búsqueda central (Gatillo para el buscador con blur) -->
+    <button 
+      (click)="cartService.openSearch()"
+      class="flex items-center gap-3 w-full max-w-md bg-zinc-50 border border-zinc-200/60 rounded-xl px-4 py-2 hover:bg-zinc-100/50 hover:border-zinc-300 transition-all duration-200 cursor-pointer text-zinc-400 group"
+      aria-label="Buscar productos"
+    >
+      <!-- Search Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-zinc-400 group-hover:text-zinc-600 transition-colors">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.636Z" />
+      </svg>
+      <span class="text-sm font-medium text-zinc-500 group-hover:text-zinc-700 transition-colors flex-grow text-left hidden sm:inline">
+        Buscar productos para tu mascota...
+      </span>
+      <span class="text-sm font-medium text-zinc-500 group-hover:text-zinc-700 transition-colors flex-grow text-left sm:hidden">
+        Buscar...
+      </span>
+      <kbd class="hidden md:inline-flex items-center gap-0.5 text-xs text-zinc-400 bg-white border border-zinc-200 px-1.5 py-0.5 rounded-md font-sans">
+        <span>Ctrl</span><span>K</span>
+      </kbd>
+    </button>
+
+    <!-- Acciones Derecha -->
+    <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+      
+      <!-- Login -->
+      <button 
+        (click)="onLogin()"
+        class="btn-outline hidden sm:inline-flex py-2 px-3.5 text-sm"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+        </svg>
+        <span>Ingresar</span>
+      </button>
+
+      <!-- Botón Login Mobile -->
+      <button 
+        (click)="onLogin()"
+        class="btn-icon sm:hidden"
+        aria-label="Iniciar Sesión"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5.5 h-5.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+        </svg>
+      </button>
+
+      <!-- Divisor vertical -->
+      <span class="h-6 w-px bg-zinc-200" aria-hidden="true"></span>
+
+      <!-- Shopping Cart Button -->
+      <button 
+        (click)="cartService.openCart()"
+        class="btn-icon bg-zinc-50 border border-zinc-200/50 hover:bg-zinc-100 hover:border-zinc-300"
+        aria-label="Ver Carrito de compras"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5.5 h-5.5 text-zinc-800">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+        </svg>
+        
+        <!-- Badge -->
+        @if (cartService.cartCount() > 0) {
+          <span class="absolute -top-1.5 -right-1.5 h-5 min-w-5 px-1 bg-amber-400 text-amber-950 font-black text-[10px] rounded-full border-2 border-white flex items-center justify-center animate-bounce">
+            {{ cartService.cartCount() }}
+          </span>
+        }
+      </button>
+
+    </div>
+  </div>
+</header>

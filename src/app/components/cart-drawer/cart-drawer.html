@@ -1,0 +1,228 @@
+<!-- Panel Lateral Carrito -->
+@if (cartService.isCartOpen()) {
+  <!-- Backdrop -->
+  <div 
+    (click)="cartService.closeCart()"
+    class="drawer-backdrop opacity-100"
+    role="presentation"
+  ></div>
+
+  <!-- Drawer Container -->
+  <div class="drawer-container translate-x-0 duration-300 ease-out select-none">
+    
+    <!-- Header -->
+    <div class="p-5 border-b border-zinc-100 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-zinc-900">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+        </svg>
+        <h2 class="text-lg font-black text-zinc-950">Carrito de Compras</h2>
+        <span class="badge-amber font-mono text-[10px]">{{ cartService.cartCount() }}</span>
+      </div>
+      
+      <button 
+        (click)="cartService.closeCart()"
+        class="p-1.5 text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 rounded-lg transition-colors cursor-pointer"
+        aria-label="Cerrar carrito"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Scrollable Items List -->
+    <div class="flex-grow overflow-y-auto custom-scrollbar p-5 space-y-4">
+      @for (item of cartService.cartItems(); track item.product.id) {
+        <div class="flex items-center gap-4 p-3 rounded-2xl bg-zinc-50 border border-zinc-100/60 relative group">
+          <!-- Thumbnail -->
+          <div class="w-16 h-16 rounded-xl bg-white border border-zinc-200/50 overflow-hidden flex-shrink-0 flex items-center justify-center p-1.5">
+            <img [src]="item.product.imageUrl" [alt]="item.product.name" class="w-full h-full object-contain" />
+          </div>
+
+          <!-- Product info -->
+          <div class="flex-grow min-w-0">
+            <h4 class="font-bold text-zinc-900 text-xs truncate">{{ item.product.name }}</h4>
+            <p class="text-[10px] text-zinc-400 font-semibold uppercase tracking-wider">{{ item.product.category }}</p>
+            <span class="text-sm font-black text-zinc-900 mt-1 block">${{ item.product.price }}</span>
+          </div>
+
+          <!-- Quantity adjustments & Delete -->
+          <div class="flex flex-col items-end justify-between self-stretch">
+            <!-- Delete Trash Button -->
+            <button 
+              (click)="cartService.removeFromCart(item.product.id)"
+              class="text-zinc-400 hover:text-red-500 p-1 rounded transition-colors cursor-pointer"
+              aria-label="Eliminar producto"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+              </svg>
+            </button>
+
+            <!-- Quantity adjust -->
+            <div class="flex items-center bg-white border border-zinc-200 rounded-lg p-0.5 mt-2 shadow-sm">
+              <button 
+                (click)="cartService.updateQuantity(item.product.id, -1)"
+                class="w-6 h-6 flex items-center justify-center text-zinc-500 hover:bg-zinc-50 rounded font-bold transition-all cursor-pointer"
+                aria-label="Disminuir cantidad"
+              >
+                -
+              </button>
+              <span class="w-6 text-center text-xs font-bold text-zinc-800">{{ item.quantity }}</span>
+              <button 
+                (click)="cartService.updateQuantity(item.product.id, 1)"
+                class="w-6 h-6 flex items-center justify-center text-zinc-500 hover:bg-zinc-50 rounded font-bold transition-all cursor-pointer"
+                aria-label="Aumentar cantidad"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <!-- Empty State -->
+        <div class="h-full flex flex-col items-center justify-center text-center py-12 px-4">
+          <div class="h-16 w-16 bg-amber-50 rounded-full flex items-center justify-center text-amber-500 mb-4 animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-zinc-900 text-sm">Tu carrito está vacío</h3>
+          <p class="text-xs text-zinc-500 mt-1 max-w-[200px]">
+            ¡Añade productos de nuestra colección de temporada para mimar a tu mascota!
+          </p>
+          <button 
+            (click)="cartService.closeCart()" 
+            class="btn-primary mt-6 text-xs px-4 py-2"
+          >
+            Empezar a Comprar
+          </button>
+        </div>
+      }
+    </div>
+
+    <!-- Checkout Summary Footer -->
+    @if (cartService.cartItems().length > 0) {
+      <div class="border-t border-zinc-100 p-5 bg-zinc-50 shadow-inner space-y-4">
+        
+        <!-- Coupon Form Input -->
+        <div>
+          <div class="flex gap-2">
+            <input 
+              [(ngModel)]="couponInput"
+              type="text" 
+              placeholder="Ingresa cupón (ej. DOGDAY)" 
+              class="w-full bg-white border border-zinc-200/80 rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-wider focus:outline-none focus:border-amber-400"
+              (keydown.enter)="onApplyCoupon()"
+            />
+            <button 
+              (click)="onApplyCoupon()"
+              class="btn-secondary py-2 px-4 text-xs font-bold whitespace-nowrap"
+            >
+              Aplicar
+            </button>
+          </div>
+
+          <!-- Error coupon -->
+          @if (couponError()) {
+            <p class="text-[10px] text-red-500 font-semibold mt-1 px-1">{{ couponError() }}</p>
+          }
+        </div>
+
+        <!-- Prices calculation -->
+        <div class="space-y-2 text-xs font-semibold text-zinc-600">
+          <!-- Subtotal -->
+          <div class="flex items-center justify-between">
+            <span>Subtotal</span>
+            <span class="text-zinc-900">${{ cartService.subtotal() }}</span>
+          </div>
+
+          <!-- Active coupon discount line -->
+          @if (cartService.activeCoupon(); as coupon) {
+            <div class="flex items-center justify-between text-green-700 bg-green-50/50 border border-green-100 rounded-lg p-2">
+              <div class="flex items-center gap-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                  <path fill-rule="evenodd" d="M5.5 3A2.5 2.5 0 0 0 3 5.5v2.879a2.5 2.5 0 0 0 .732 1.767l6.5 6.5a2.5 2.5 0 0 0 3.536 0l2.878-2.878a2.5 2.5 0 0 0 0-3.536l-6.5-6.5A2.5 2.5 0 0 0 8.38 3H5.5ZM6 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
+                </svg>
+                <span>Cupón: <strong class="font-bold">{{ coupon.code }}</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span>
+                  @if (coupon.code === 'ENVIOFREE') {
+                    Envío Gratis
+                  } @else {
+                    -${{ cartService.discount() }}
+                  }
+                </span>
+                <button 
+                  (click)="cartService.removeCoupon()"
+                  class="text-green-800 hover:text-red-500 font-bold px-1 transition-colors cursor-pointer"
+                  aria-label="Quitar cupón"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          }
+
+          <!-- Shipping -->
+          <div class="flex items-center justify-between">
+            <span>Envío</span>
+            @if (cartService.shipping() === 0) {
+              <span class="text-green-600 font-bold bg-green-50 px-2 py-0.5 rounded-full text-[10px]">Gratis</span>
+            } @else {
+              <span class="text-zinc-900">${{ cartService.shipping() }}</span>
+            }
+          </div>
+
+          <!-- Total divider -->
+          <div class="border-t border-zinc-200/80 my-2"></div>
+
+          <!-- Total -->
+          <div class="flex items-center justify-between text-base font-black text-zinc-900 pt-1">
+            <span>Total</span>
+            <span class="text-lg text-amber-600">${{ cartService.total() }}</span>
+          </div>
+        </div>
+
+        <!-- Checkout Button -->
+        <button 
+          (click)="onCheckout()"
+          [disabled]="isCheckingOut()"
+          class="btn-primary w-full py-4 text-sm font-bold flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed select-none"
+        >
+          @if (isCheckingOut()) {
+            <!-- Spinner -->
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-amber-950" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>Procesando pago...</span>
+          } @else {
+            <span>Proceder al Pago</span>
+          }
+        </button>
+
+      </div>
+    }
+
+  </div>
+}
+
+<!-- Simulated Purchase Success Toast -->
+@if (showSuccessToast()) {
+  <div class="fixed bottom-6 right-6 max-w-sm bg-zinc-900 text-white rounded-2xl shadow-2xl border border-zinc-800 p-4 z-90 flex gap-3 animate-scale duration-300">
+    <div class="h-10 w-10 bg-green-500 text-white flex items-center justify-center rounded-xl flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+      </svg>
+    </div>
+    <div>
+      <h4 class="font-bold text-sm text-white">¡Compra Simulada con Éxito!</h4>
+      <p class="text-[11px] text-zinc-400 mt-1 leading-relaxed">
+        Muchas gracias por tu pedido. Hemos vaciado tu carrito y aplicado los descuentos para esta demostración.
+      </p>
+    </div>
+  </div>
+}
