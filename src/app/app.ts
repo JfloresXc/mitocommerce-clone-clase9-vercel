@@ -1,25 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { NavbarComponent } from './components/navbar/navbar';
-import { HeroComponent } from './components/hero/hero';
-import { CouponsComponent } from './components/coupons/coupons';
-import { ProductCatalogComponent } from './components/product-catalog/product-catalog';
-import { CartDrawerComponent } from './components/cart-drawer/cart-drawer';
-import { SearchModalComponent } from './components/search-modal/search-modal';
-import { FooterComponent } from './components/footer/footer';
+import { Navbar } from './shared/ui/navbar/navbar';
+import { Sidebar } from './shared/ui/sidebar/sidebar';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    NavbarComponent,
-    HeroComponent,
-    CouponsComponent,
-    ProductCatalogComponent,
-    CartDrawerComponent,
-    SearchModalComponent,
-    FooterComponent
-  ],
+  imports: [Navbar, Sidebar],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('MitoPets');
