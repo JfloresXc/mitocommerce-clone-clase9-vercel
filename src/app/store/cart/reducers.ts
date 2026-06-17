@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { CartActions } from './actions';
+import { CartActions, CartStorageActions } from './actions';
 import { Product } from 'app/modules/product/interfaces/product';
 
 const INITIAL_STATE: Product[] = [];
@@ -7,12 +7,24 @@ const INITIAL_STATE: Product[] = [];
 export const CartReducer = createReducer(
   INITIAL_STATE,
   on(CartActions.addProduct, (state, { product }) => {
-    return [...state, product];
+    const findedProduct = state.find((item) => item.id === product.id);
+    if (findedProduct) {
+      return state.map((item) =>
+        item.id === product.id ? { ...item, quantity: (item?.quantity ?? 0) + 1 } : item,
+      );
+    }
+    return [...state, { ...product, quantity: 1 }];
   }),
   on(CartActions.restProduct, () => {
     return [];
   }),
   on(CartActions.clearProducts, () => {
     return [];
+  }),
+  on(CartStorageActions.loadProducts, (state) => {
+    return [...state];
+  }),
+  on(CartStorageActions.loadProductsFromLocalStorage, (state, { products }) => {
+    return [...products];
   }),
 );

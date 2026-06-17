@@ -185,3 +185,20 @@
 .cr-calling a {
   @apply text-[15px] font-medium;
 }
+
+/* ===== CART BADGE & WRAPPER ===== */
+.cart-icon-wrapper {
+  @apply relative flex items-center;
+}
+
+.cart-icon-wrapper.mr-desktop {
+  @apply mr-2;
+}
+
+.cart-icon-wrapper i {
+  @apply !pr-0;
+}
+
+.cart-badge {
+  @apply absolute -top-2 -right-2.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[8px] font-bold text-white shadow-sm ring-1 ring-white;
+}

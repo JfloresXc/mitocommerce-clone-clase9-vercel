@@ -33,7 +33,14 @@
               <span>Favoritos</span>
             </a>
             <button class="cr-right-bar-item Shopping-toggle" (click)="openCart()">
-              <i class="ri-shopping-cart-line"></i>
+              <span class="cart-icon-wrapper mr-desktop">
+                <i class="ri-shopping-cart-line"></i>
+                @if (cartCount() > 0) {
+                  <span class="cart-badge">
+                    {{ cartCount() }}
+                  </span>
+                }
+              </span>
               <span>Carrito</span>
             </button>
           </div>
@@ -100,8 +107,19 @@
             <a routerLink="/wishlist" class="cr-right-bar-item">
               <i class="ri-heart-line"></i>
             </a>
-            <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle">
-              <i class="ri-shopping-cart-line"></i>
+            <a
+              href="javascript:void(0)"
+              class="cr-right-bar-item Shopping-toggle"
+              (click)="openCart()"
+            >
+              <span class="cart-icon-wrapper">
+                <i class="ri-shopping-cart-line"></i>
+                @if (cartCount() > 0) {
+                  <span class="cart-badge">
+                    {{ cartCount() }}
+                  </span>
+                }
+              </span>
             </a>
           </div>
           <div class="navbar-content" id="navbarSupportedContent">

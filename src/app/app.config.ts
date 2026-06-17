@@ -4,6 +4,8 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { CartReducer } from './store/cart/reducers';
+import { provideEffects } from '@ngrx/effects';
+import { CarEffects } from './store/cart/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,5 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideStore({
       Cart: CartReducer,
     }),
+    provideEffects([CarEffects]),
   ],
 };

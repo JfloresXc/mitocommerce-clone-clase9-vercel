@@ -1,14 +1,22 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Navbar } from './shared/ui/navbar/navbar';
 import { Sidebar } from './shared/ui/sidebar/sidebar';
 import { ShoppingCartSidebar } from './modules/cart/components/shopping-cart-sidebar/shopping-cart-sidebar';
+import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { CartStorageActions } from './store/cart/actions';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Sidebar, ShoppingCartSidebar],
+  imports: [Navbar, Sidebar, ShoppingCartSidebar, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('MitoPets');
+  store = inject(Store);
+
+  constructor() {
+    this.store.dispatch(CartStorageActions.loadProducts());
+  }
 }

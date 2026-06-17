@@ -9,3 +9,11 @@ export const CartActions = createActionGroup({
     'Clear Products': emptyProps,
   },
 });
+
+export const CartStorageActions = createActionGroup({
+  source: 'CartStorage',
+  events: {
+    'Load Products': emptyProps,
+    'Load Products from LocalStorage': props<{ products: Product[] }>(),
+  },
+});

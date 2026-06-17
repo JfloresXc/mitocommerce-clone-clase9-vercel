@@ -3,6 +3,8 @@ import { CartSidebarService } from 'app/modules/cart/services/cart-sidebar.servi
 import { CategoryFeatureService } from 'app/modules/category/services/category-feature.service';
 import { ProductFeaturedService } from 'app/modules/product/services/product-featured.service';
 import { SidebarService } from 'app/shared/services/sidebar.service';
+import { Store } from '@ngrx/store';
+import { selectCountOfProducts } from 'app/store/cart/selectors';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +16,9 @@ export class Navbar {
   categoryFeatureService = inject(CategoryFeatureService);
   sidebarService = inject(SidebarService);
   cartSidebarService = inject(CartSidebarService);
+  store = inject(Store);
+
+  cartCount = this.store.selectSignal(selectCountOfProducts);
 
   productFeaturedService = inject(ProductFeaturedService);
   products = computed(() => {
