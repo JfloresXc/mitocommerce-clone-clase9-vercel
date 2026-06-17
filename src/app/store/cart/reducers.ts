@@ -15,8 +15,14 @@ export const CartReducer = createReducer(
     }
     return [...state, { ...product, quantity: 1 }];
   }),
-  on(CartActions.restProduct, () => {
-    return [];
+  on(CartActions.restProduct, (state, { id }) => {
+    const findedProduct = state.find((item) => item.id === id);
+    if (findedProduct && (findedProduct.quantity ?? 0) > 1) {
+      return state.map((item) =>
+        item.id === id ? { ...item, quantity: (item.quantity ?? 0) - 1 } : item,
+      );
+    }
+    return state.filter((item) => item.id !== id);
   }),
   on(CartActions.clearProducts, () => {
     return [];

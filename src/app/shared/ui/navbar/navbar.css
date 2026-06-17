@@ -186,7 +186,6 @@
   @apply text-[15px] font-medium;
 }
 
-/* ===== CART BADGE & WRAPPER ===== */
 .cart-icon-wrapper {
   @apply relative flex items-center;
 }

@@ -66,6 +66,8 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Use strict type checking
 - Prefer type inference when the type is obvious
 - Avoid the `any` type; use `unknown` when type is uncertain
+- Do NOT add comments in the code. Code should be self-explanatory.
+- Avoid hardcoded values and messages. All hardcoded messages and values must be stored in a dedicated `Constants.ts` file.
 
 ## Angular Best Practices
 
@@ -86,6 +88,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 ### Components
 
 - Keep components small and focused on a single responsibility
+- Always prefer creating independent components (e.g. for notifications, lists, panels) instead of putting markup/logic directly in main or layout files (such as `app.html`).
 - Use `input()` and `output()` functions instead of decorators
 - Use `computed()` for derived state
 - Prefer inline templates for small components

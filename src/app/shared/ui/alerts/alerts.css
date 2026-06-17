@@ -1,0 +1,29 @@
+@reference "tailwindcss";
+
+.alert-container {
+  @apply fixed top-4 right-4 z-[9999] flex flex-col gap-2 pointer-events-none;
+}
+
+.alert-toast {
+  @apply pointer-events-auto flex items-center gap-2 px-4 py-3 rounded-lg shadow-lg text-sm font-medium text-white transition-all duration-300;
+}
+
+.alert-toast.success {
+  @apply bg-emerald-500;
+}
+
+.alert-toast.info {
+  @apply bg-sky-500;
+}
+
+.alert-toast.error {
+  @apply bg-rose-500;
+}
+
+.alert-toast.warning {
+  @apply bg-amber-500;
+}
+
+.alert-toast i {
+  @apply text-lg;
+}
