@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { InitialPage } from './shared/initial-page/initial-page';
+import { InitialPage } from './shared/pages/initial-page/initial-page';
 
 export const routes: Routes = [
   {

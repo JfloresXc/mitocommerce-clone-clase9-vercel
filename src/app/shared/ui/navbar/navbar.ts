@@ -5,10 +5,11 @@ import { ProductFeaturedService } from 'app/modules/product/services/product-fea
 import { SidebarService } from 'app/shared/services/sidebar.service';
 import { Store } from '@ngrx/store';
 import { selectCountOfProducts } from 'app/store/cart/selectors';
+import { InputSearchProduct } from 'app/modules/product/components/input-search-product/input-search-product';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [InputSearchProduct],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
