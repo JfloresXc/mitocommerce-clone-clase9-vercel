@@ -3,6 +3,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { form, FormField, required } from '@angular/forms/signals';
+import { AlertService } from 'app/shared/services/alert.service';
 
 @Component({
   selector: 'app-footer',
@@ -12,6 +13,7 @@ import { form, FormField, required } from '@angular/forms/signals';
 })
 export class Footer {
   currentYear = signal(new Date().getFullYear());
+  alertService = inject(AlertService);
 
   companyLinks = [
     { title: 'Sobre Nosotros', url: '/about' },
@@ -41,6 +43,7 @@ export class Footer {
   });
 
   onNewsletterSubmit(): void {
-    console.log(this.footerForm().value());
+    this.alertService.success('Gracias por suscribirte');
+    this.footerForm().reset();
   }
 }

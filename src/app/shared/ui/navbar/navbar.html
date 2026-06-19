@@ -3,7 +3,7 @@
     <div class="cr-row">
       <div class="cr-col">
         <div class="top-header">
-          <a class="cr-logo">
+          <a [routerLink]="['/']" class="cr-logo">
             <img src="/img/logo/logo.png" alt="logo" class="logo" />
             <img src="/img/logo/dark-logo.png" alt="logo" class="dark-logo" />
           </a>
@@ -13,7 +13,7 @@
           <div class="cr-right-bar">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle cr-right-bar-item">
+                <a [routerLink]="['/products']" class="nav-link dropdown-toggle cr-right-bar-item">
                   <i class="ri-user-3-line"></i>
                   <span>Cuenta</span>
                 </a>

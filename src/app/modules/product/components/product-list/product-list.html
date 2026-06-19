@@ -1,0 +1,47 @@
+<div
+  class="product-list-container"
+  data-aos="fade-up"
+  data-aos-duration="2000"
+  data-aos-delay="600"
+>
+  <div class="cr-row">
+    <div class="cr-col">
+      <div class="cr-shop-bredekamp">
+        <div class="cr-toggle">
+          <a href="javascript:void(0)" class="gridCol active-grid">
+            <i class="ri-grid-line"></i>
+          </a>
+        </div>
+        <div class="center-content">
+          <span>¡Encontramos {{ this.productCount() }} productos para ti!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-100">
+    <div class="cr-product-box">
+      @for (product of products(); track product.id; let i = $index) {
+        <app-product-card [product]="product"></app-product-card>
+      }
+    </div>
+  </div>
+  <nav class="cr-pagination">
+    <ul class="pagination">
+      <li class="page-item disabled">
+        <span class="page-link">Anterior</span>
+      </li>
+      <li class="page-item active" aria-current="page">
+        <span class="page-link">1</span>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
+</div>

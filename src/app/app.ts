@@ -6,10 +6,11 @@ import { Alerts } from './shared/ui/alerts/alerts';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CartStorageActions } from './store/cart/actions';
+import { Footer } from './shared/ui/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Sidebar, ShoppingCartSidebar, Alerts, RouterOutlet],
+  imports: [Navbar, Sidebar, ShoppingCartSidebar, Alerts, RouterOutlet, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

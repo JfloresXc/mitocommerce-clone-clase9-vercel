@@ -5,6 +5,7 @@ import { CategoryFeatureService } from 'app/modules/category/services/category-f
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { ProductService } from '../../services/product.service';
 import { debounceTime, of, switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-input-search-product',
@@ -16,6 +17,7 @@ export class InputSearchProduct {
   categoryFeatureService = inject(CategoryFeatureService);
   categories = computed(() => this.categoryFeatureService.categories());
   productService = inject(ProductService);
+  router = inject(Router);
 
   searchTerm = signal('');
   productResponse = toSignal(
@@ -30,5 +32,8 @@ export class InputSearchProduct {
 
   products = computed(() => this.productResponse()?.data || []);
 
-  searchProduct() {}
+  searchProduct() {
+    const url = `/products`;
+    this.router.navigate([url], { queryParams: { search: this.searchTerm() } });
+  }
 }
