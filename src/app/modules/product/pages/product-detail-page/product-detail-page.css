@@ -1,0 +1,19 @@
+@reference "tailwindcss";
+
+.section-product {
+  @apply py-[100px] max-[1200px]:py-[70px];
+}
+
+.product-detail-container {
+  @apply flex flex-wrap relative mx-auto;
+  @apply min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px];
+  @apply min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px];
+}
+
+.image-column {
+  @apply w-full min-[768px]:w-[50%] min-[1200px]:w-[41.66%] min-[1400px]:w-[33.33%] px-[12px];
+}
+
+.info-column {
+  @apply w-full min-[768px]:w-[50%] min-[1200px]:w-[58.33%] min-[1400px]:w-[66.66%] px-[12px];
+}

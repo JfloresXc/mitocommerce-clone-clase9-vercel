@@ -3,7 +3,7 @@
     <div class="cr-product-image">
       <div class="cr-image-inner zoom-image-hover">
         <img
-          [src]="`https://maraviyainfotech.com/projects/carrot-tailwind/assets/${product().image}`"
+          [ngSrc]="`https://maraviyainfotech.com/projects/carrot-tailwind/assets/${product().image}`"
           width="600"
           height="600"
           alt="product-1"
@@ -31,7 +31,7 @@
           <p>({{ product().rating }})</p>
         </div>
       </div>
-      <a href="product-left-sidebar.html" class="title">{{ product().name }}</a>
+      <a [routerLink]="['/products', product().id]" class="title">{{ product().name }}</a>
       <p class="cr-price">
         <span class="new-price">{{ product().price }}</span>
         <span class="old-price">{{ (product().price ?? 0) + 1.3 }}</span>

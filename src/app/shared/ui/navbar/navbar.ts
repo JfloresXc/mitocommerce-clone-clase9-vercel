@@ -1,7 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { CartSidebarService } from 'app/modules/cart/services/cart-sidebar.service';
 import { CategoryFeatureService } from 'app/modules/category/services/category-feature.service';
-import { ProductFeaturedService } from 'app/modules/product/services/product-featured.service';
+// import { ProductFeaturedService } from 'app/modules/product/services/product-featured.service';
 import { SidebarService } from 'app/shared/services/sidebar.service';
 import { Store } from '@ngrx/store';
 import { selectCountOfProducts } from 'app/store/cart/selectors';
@@ -22,9 +22,18 @@ export class Navbar {
 
   cartCount = this.store.selectSignal(selectCountOfProducts);
 
-  productFeaturedService = inject(ProductFeaturedService);
+  // productFeaturedService = inject(ProductFeaturedService);
   products = computed(() => {
-    return this.productFeaturedService.products();
+    return [
+      {
+        id: '0',
+        name: 'Apple Juice',
+        price: 2.19,
+        stock: 10,
+        category: 'Fruit',
+        image: 'product-1.png',
+      },
+    ];
   });
 
   open() {

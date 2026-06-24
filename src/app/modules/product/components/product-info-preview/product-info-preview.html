@@ -1,0 +1,42 @@
+<div class="product-info-container">
+  <div class="cr-size-and-weight-contain">
+    <h2 id="product-name" class="heading">{{ product()?.name }}</h2>
+    <p class="product-description">{{ product()?.description }}</p>
+  </div>
+  <div class="cr-size-and-weight">
+    <div class="cr-review-star">
+      <div class="cr-star">
+        @for (rating of ratingArray(); track $index) {
+          <i id="rating-star" class="ri-star-fill"></i>
+        }
+      </div>
+      <p class="review-count">( 75 Review )</p>
+    </div>
+    <div class="cr-product-price">
+      <span class="new-price">{{ product()?.price }}</span>
+      <span class="old-price">{{ (product()?.price ?? 0) + 1 }}</span>
+    </div>
+    <div class="cr-add-card">
+      <div class="cr-qty-main">
+        <input
+          type="text"
+          placeholder="."
+          value="1"
+          minlength="1"
+          maxlength="20"
+          class="quantity"
+        />
+        <button type="button" class="plus">+</button>
+        <button type="button" class="minus">-</button>
+      </div>
+      <div class="cr-add-button">
+        <button type="button" class="cr-button cr-shopping-bag">Agregar a carrito</button>
+      </div>
+      <div class="cr-card-icon">
+        <a class="wishlist">
+          <i class="ri-heart-line"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

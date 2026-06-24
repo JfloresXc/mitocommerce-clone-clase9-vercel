@@ -8,7 +8,11 @@
             <img src="/img/logo/dark-logo.png" alt="logo" class="dark-logo" />
           </a>
 
-          <app-input-search-product />
+          @defer (hydrate on interaction) {
+            <app-input-search-product />
+          } @placeholder {
+            <div class="h-[100px]"></div>
+          }
 
           <div class="cr-right-bar">
             <ul class="navbar-nav">

@@ -4,10 +4,12 @@ import { Product } from '../../interfaces/product';
 import { CartActions } from 'app/store/cart/actions';
 import { AlertService } from 'app/shared/services/alert.service';
 import { CART_MESSAGES } from 'app/shared/constants';
+import { RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
-  imports: [],
+  imports: [RouterLink, NgOptimizedImage],
   templateUrl: './product-card.html',
   styleUrl: './product-card.css',
 })
