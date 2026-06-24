@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { afterNextRender, Component, inject, signal } from '@angular/core';
 import { Navbar } from './shared/ui/navbar/navbar';
 import { Sidebar } from './shared/ui/sidebar/sidebar';
 import { ShoppingCartSidebar } from './modules/cart/components/shopping-cart-sidebar/shopping-cart-sidebar';
@@ -19,6 +19,8 @@ export class App {
   store = inject(Store);
 
   constructor() {
-    this.store.dispatch(CartStorageActions.loadProducts());
+    afterNextRender(() => {
+      this.store.dispatch(CartStorageActions.loadProducts());
+    });
   }
 }

@@ -6,6 +6,7 @@ import { provideStore } from '@ngrx/store';
 import { CartReducer } from './store/cart/reducers';
 import { provideEffects } from '@ngrx/effects';
 import { CarEffects } from './store/cart/effects';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,5 +16,6 @@ export const appConfig: ApplicationConfig = {
       Cart: CartReducer,
     }),
     provideEffects([CarEffects]),
+    provideClientHydration(withEventReplay()),
   ],
 };
