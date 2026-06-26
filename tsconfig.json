@@ -16,10 +16,11 @@
     "module": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@modules/*": ["modules/*"],
-      "@shared/*": ["shared/*"],
-      "@core/*": ["core/*"],
-      "@environments/*": ["environments/*"]
+      "@modules/*": ["app/modules/*"],
+      "@shared/*": ["app/shared/*"],
+      "@core/*": ["app/core/*"],
+      "@environments/*": ["environments/*"],
+      "@store/*": ["app/store/*"]
     }
   },
   "angularCompilerOptions": {

@@ -45,7 +45,7 @@ describe('ProductInfoPreview', () => {
     fixture.componentRef.setInput('product', { ...mockProduct, rating: 5 });
     fixture.detectChanges();
 
-    const ratingStarElements = compiledElement.querySelectorAll('#rating-star');
+    const ratingStarElements = compiledElement.querySelectorAll('.rating-star');
     expect(ratingStarElements).toHaveLength(5);
   });
 });

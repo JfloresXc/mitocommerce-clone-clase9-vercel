@@ -1,16 +1,17 @@
-import { afterNextRender, Component, computed, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { ProductImagePreview } from '../../components/product-image-preview/product-image-preview';
 import { ProductInfoPreview } from '../../components/product-info-preview/product-info-preview';
+import { ProductCard } from '../../components/product-card/product-card';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductImage } from '../../interfaces/productImage';
-import { map } from 'rxjs';
+import { map, of } from 'rxjs';
 import { SeoService } from 'app/shared/services/seo.service';
 
 @Component({
   selector: 'app-product-detail-page',
-  imports: [ProductImagePreview, ProductInfoPreview],
+  imports: [ProductImagePreview, ProductInfoPreview, ProductCard],
   templateUrl: './product-detail-page.html',
   styleUrl: './product-detail-page.css',
 })
@@ -28,6 +29,29 @@ export class ProductDetailPage {
       idProduct: this.idProduct(),
     }),
     stream: ({ params: { idProduct } }) => this.productService.getProductById(idProduct),
+  });
+
+  relatedProductsResource = rxResource({
+    params: () => ({
+      categoryId: this.productResource.value()?.categoryId,
+    }),
+    stream: ({ params: { categoryId } }) => {
+      if (categoryId !== undefined) {
+        return this.productService.getProducts({ searchTerm: '', categoryId });
+      }
+      return of(null);
+    },
+  });
+
+  relatedProducts = computed(() => {
+    const currentProductId = this.productResource.value()?.id;
+    const allProducts = this.relatedProductsResource.value();
+    if (!allProducts) return [];
+
+    const list = Array.isArray(allProducts) ? allProducts : (allProducts.data ?? []);
+    return list
+      .filter((p) => p.id !== currentProductId)
+      .slice(0, 4);
   });
 
   productImages = computed(() => {
@@ -58,13 +82,16 @@ export class ProductDetailPage {
   });
 
   constructor() {
-    afterNextRender(() => {
-      this.seoService.updateTags({
-        title: this.productResource.value()?.name ?? '',
-        description: this.productResource.value()?.description ?? '',
-        image: this.productResource.value()?.image ?? '',
-        type: 'product',
-      });
+    effect(() => {
+      const product = this.productResource.value();
+      if (product) {
+        this.seoService.updateTags({
+          title: product.name ?? '',
+          description: product.description ?? '',
+          image: product.image ?? '',
+          type: 'product',
+        });
+      }
     });
   }
 }

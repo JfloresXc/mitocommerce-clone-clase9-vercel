@@ -2,14 +2,39 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductList } from './product-list';
 import { ProductCard } from '../product-card/product-card';
 import { Product } from '../../interfaces/product';
-import { cartReducer } from '@store/cart/cart.reducer';
+import { CartReducer } from '@store/cart/reducers';
 import { provideStore } from '@ngrx/store';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 
 const mockProducts: Product[] = [
-  { id: '1', name: 'Laptop',  price: 999, rating: 3, stock: 5,  category: 'Electronics', image: 'laptop.jpg' },
-  { id: '2', name: 'Mouse',   price: 29,  rating: 4, stock: 20, category: 'Electronics', image: 'mouse.jpg'  },
-  { id: '3', name: 'Teclado', price: 59,  rating: 5, stock: 15, category: 'Electronics', image: 'teclado.jpg'},
+  {
+    id: '1',
+    name: 'Laptop',
+    price: 999,
+    rating: 3,
+    stock: 5,
+    category: 'Electronics',
+    image: 'laptop.jpg',
+  },
+  {
+    id: '2',
+    name: 'Mouse',
+    price: 29,
+    rating: 4,
+    stock: 20,
+    category: 'Electronics',
+    image: 'mouse.jpg',
+  },
+  {
+    id: '3',
+    name: 'Teclado',
+    price: 59,
+    rating: 5,
+    stock: 15,
+    category: 'Electronics',
+    image: 'teclado.jpg',
+  },
 ];
 
 describe('ProductList + ProductCard Integration', () => {
@@ -19,18 +44,17 @@ describe('ProductList + ProductCard Integration', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      // ✅ Integración: usamos los componentes REALES, no mocks
       imports: [ProductList, ProductCard],
       providers: [
-        provideStore({ cart: cartReducer }),
+        provideStore({ cart: CartReducer }),
         provideHttpClient(withFetch()),
+        provideRouter([]),
       ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductList);
     component = fixture.componentInstance;
     compiledElement = fixture.nativeElement;
-    fixture.detectChanges();
   });
 
   it('debería crear el componente ProductList', () => {
@@ -73,5 +97,11 @@ describe('ProductList + ProductCard Integration', () => {
     const thirdCard = compiledElement.querySelectorAll('app-product-card')[2];
     const stars = thirdCard.querySelectorAll('.ri-star-fill');
     expect(stars.length).toBe(5);
+  });
+
+  it('debería tener la misma cantidad inicial', () => {
+    fixture.componentRef.setInput('products', mockProducts);
+    fixture.detectChanges();
+    expect(component.productCount()).toBe(mockProducts.length);
   });
 });
