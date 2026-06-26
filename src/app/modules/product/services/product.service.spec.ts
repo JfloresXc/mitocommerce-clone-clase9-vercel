@@ -5,7 +5,6 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
 import { Product } from '../interfaces/product';
 import { ProductPage } from '../interfaces/productPage';
-import { afterEveryRender } from '@angular/core';
 
 const MOCK_PRODUCTS: Product[] = [
   {
