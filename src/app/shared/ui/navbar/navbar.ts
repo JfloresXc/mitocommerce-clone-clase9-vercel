@@ -1,12 +1,12 @@
 import { Component, computed, inject } from '@angular/core';
 import { CartSidebarService } from 'app/modules/cart/services/cart-sidebar.service';
 import { CategoryFeatureService } from 'app/modules/category/services/category-feature.service';
-// import { ProductFeaturedService } from 'app/modules/product/services/product-featured.service';
 import { SidebarService } from 'app/shared/services/sidebar.service';
 import { Store } from '@ngrx/store';
 import { selectCountOfProducts } from 'app/store/cart/selectors';
 import { InputSearchProduct } from 'app/modules/product/components/input-search-product/input-search-product';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '@modules/auth/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,8 +21,9 @@ export class Navbar {
   store = inject(Store);
 
   cartCount = this.store.selectSignal(selectCountOfProducts);
+  authService = inject(AuthService);
+  isAuthenticated = computed(() => this.authService.isAuthenticated());
 
-  // productFeaturedService = inject(ProductFeaturedService);
   products = computed(() => {
     return [
       {
@@ -42,5 +43,9 @@ export class Navbar {
 
   openCart() {
     this.cartSidebarService.open();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

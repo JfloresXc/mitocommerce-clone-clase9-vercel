@@ -11,6 +11,8 @@ import {
   withEventReplay,
   withIncrementalHydration,
 } from '@angular/platform-browser';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { AuthInterceptor } from '@core/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,5 +23,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideEffects([CarEffects]),
     provideClientHydration(withEventReplay(), withIncrementalHydration()),
+    provideHttpClient(withInterceptors([AuthInterceptor])),
   ],
 };

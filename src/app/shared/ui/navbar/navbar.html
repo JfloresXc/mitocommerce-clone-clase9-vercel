@@ -22,13 +22,15 @@
                   <span>Cuenta</span>
                 </a>
                 <ul class="dropdown-menu">
-                  @if (true) {
+                  @if (!isAuthenticated()) {
                     <li>
                       <a class="dropdown-item" routerLink="/login">Iniciar Sesión</a>
                     </li>
                   } @else {
                     <li>
-                      <button class="dropdown-item">Cerrar Sesión</button>
+                      <button type="button" (click)="logout()" class="dropdown-item">
+                        Cerrar Sesión
+                      </button>
                     </li>
                   }
                 </ul>
