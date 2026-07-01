@@ -67,7 +67,10 @@ export class AuthService {
   }
 
   getTokenFromSessionStorage() {
-    if (this.isBrowser) sessionStorage.getItem(ACCESS_TOKEN);
+    if (this.isBrowser) {
+      const token = sessionStorage.getItem(ACCESS_TOKEN);
+      return token ? token : null;
+    }
     return null;
   }
 

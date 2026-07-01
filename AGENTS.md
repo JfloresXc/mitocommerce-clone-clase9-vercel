@@ -18,7 +18,8 @@ Este archivo define las directrices arquitectónicas, estándares de codificaci�
 - **`src/app/modules/`:** Módulos encapsulados por dominio de negocio (ej. `product`, `cart`, `category`). Cada uno contiene sus componentes, servicios e interfaces.
 - **`src/app/shared/`:** Componentes reutilizables de UI (`shared/ui`), páginas estáticas o de entrada general (`shared/initial-page`), y servicios transversales (`shared/services`).
 - **`src/app/store/`:** Estado global de NgRx. Actualmente maneja el estado del carrito de compras (`store/cart/`).
-- **Importaciones:** Usar rutas relativas dentro de un mismo módulo y alias configurados en `tsconfig.json` para recursos externos globales (como `@environments/*`).
+- **`src/app/core/`:** Elementos de infraestructura global y seguridad, tales como guards (`core/guards/`) e interceptores (`core/interceptors/`).
+- **Importaciones:** Usar rutas relativas dentro de un mismo módulo y alias configurados en `tsconfig.json` para recursos externos globales (como `@environments/*` o `@core/*`).
 
 ---
 
@@ -31,6 +32,8 @@ Este archivo define las directrices arquitectónicas, estándares de codificaci�
   - Usar `input<T>()` en lugar del decorador `@Input()`.
   - Usar `computed(() => ...)` para derivar valores o estados calculados (como el conteo de estrellas en base al rating).
   - Usar `toSignal` de `@angular/core/rxjs-interop` para transformar de forma reactiva flujos asíncronos de servicios (observables) a señales de Angular.
+- **Guards Funcionales:** Preferir guards basados en funciones (`CanActivateFn`, `CanMatchFn`, etc.) en lugar de guards basados en clases. Deben inyectar dependencias mediante la función `inject()`.
+- **Interceptores Funcionales:** Todos los interceptores HTTP deben ser funciones interceptoras en lugar de clases, registradas en `app.config.ts` utilizando `provideHttpClient(withInterceptors([...]))`.
 
 ---
 

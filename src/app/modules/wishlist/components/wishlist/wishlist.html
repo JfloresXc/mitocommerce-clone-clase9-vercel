@@ -11,11 +11,7 @@
       <div
         class="w-[50%] max-[480px]:w-full cr-product-box px-[12px] mb-[24px] flex flex-row gap-1.5"
       >
-        @for (product of productsDefault; track product.id) {
-          <app-product-card [product]="product"></app-product-card>
-        }
-
-        @for (product of wishListResource.value(); track product.id) {
+        @for (product of wishlistService.wishlist(); track product.id) {
           <app-product-card [product]="product"></app-product-card>
         }
       </div>
