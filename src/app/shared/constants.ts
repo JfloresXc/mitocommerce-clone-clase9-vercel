@@ -36,3 +36,13 @@ export const COUPON_MESSAGES = {
   copyError: 'Error al copiar el código de cupón',
 } as const;
 
+export const AUTH_KEYS = {
+  accessToken: 'access_token',
+} as const;
+
+export const AUTH_MESSAGES = {
+  sessionClosed: 'Sesión cerrada',
+  loginSuccess: 'Inicio de sesión exitoso',
+  sessionExpired: 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente.',
+} as const;
+
