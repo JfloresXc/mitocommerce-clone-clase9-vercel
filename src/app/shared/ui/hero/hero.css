@@ -67,10 +67,13 @@
 .hero-subtitle {
   @apply mb-[20px] text-[20px] font-bold leading-[1.2];
   @apply max-[992px]:mb-[15px] max-[768px]:text-[14px] max-[768px]:font-normal;
+  font-family: 'Poppins', sans-serif;
 }
 
 .hero-subtitle span {
-  @apply mr-[5px] text-[#64b496] border-b-2 border-solid border-[#64b496] font-bold;
+  @apply mr-[5px] font-bold;
+  color: var(--brand-primary);
+  border-bottom: 2px solid var(--brand-primary);
 }
 
 .hero-title {
@@ -82,11 +85,13 @@
   @apply max-[480px]:mb-0;
   @apply max-[360px]:text-[20px] max-[360px]:leading-[26px];
   @apply max-[320px]:text-[22px] max-[320px]:leading-[24px] max-[320px]:mb-[10px];
+  font-family: 'Poppins', sans-serif;
 }
 
 .hero-description {
   @apply mb-0 text-[15px] text-[#7a7a7a] leading-[1.75];
   @apply max-[768px]:text-[14px] max-[480px]:hidden;
+  font-family: 'Manrope', sans-serif;
 }
 
 /* ===== BUTTONS ===== */
@@ -97,16 +102,27 @@
 .cr-button {
   @apply mr-[20px] h-[40px] font-bold transition-all duration-300 ease-in-out;
   @apply py-[8px] px-[22px] text-[14px] capitalize leading-[1.2];
-  @apply bg-[#64b496] text-white border border-solid border-[#64b496] rounded-[5px];
-  @apply flex items-center justify-center hover:bg-black hover:border-black;
+  @apply flex items-center justify-center;
+  background-color: var(--brand-primary);
+  color: white;
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
+  font-family: 'Manrope', sans-serif;
+  &:hover {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+  }
 }
 
 /* ===== NAVIGATION ARROWS ===== */
 .slider-arrow {
   @apply absolute top-1/2 -translate-y-1/2 z-[3] w-[40px] h-[40px];
-  @apply bg-white/80 hover:bg-[#64b496] rounded-full;
+  @apply bg-white/80 rounded-full;
   @apply flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer;
   @apply max-[768px]:w-[35px] max-[768px]:h-[35px];
+  &:hover {
+    background-color: var(--brand-primary);
+  }
 }
 
 .slider-arrow-left {
@@ -136,7 +152,8 @@
 }
 
 .slider-dot.active {
-  @apply bg-[#64b496] w-[30px];
+  @apply w-[30px];
+  background-color: var(--brand-primary);
 }
 
 .slider-dot.inactive {

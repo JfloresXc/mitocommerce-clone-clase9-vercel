@@ -45,9 +45,15 @@
 
 .button {
   @apply transition-all duration-300 ease-in-out min-w-[140px] mr-[15px] py-[8px] px-[20px] h-[40px];
-  @apply text-[14px] font-bold capitalize leading-[1.2] bg-[#64b496] text-white;
-  @apply border border-solid border-[#64b496] rounded-[5px] flex items-center justify-center;
-  @apply hover:bg-[#000] hover:border-[#000] cursor-pointer;
+  @apply text-[14px] font-bold capitalize leading-[1.2] text-white;
+  @apply flex items-center justify-center cursor-pointer;
+  background-color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
+  &:hover {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+  }
 }
 
 .signup-link {

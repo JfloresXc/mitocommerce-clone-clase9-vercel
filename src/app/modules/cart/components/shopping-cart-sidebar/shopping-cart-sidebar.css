@@ -121,16 +121,29 @@
 
 .cr-button {
   @apply h-[40px] font-bold transition-all duration-300 ease-in-out py-[8px] px-[22px];
-  @apply text-[14px] capitalize leading-[1.2] bg-[#64b496] text-white;
-  @apply border border-solid border-[#64b496] rounded-[5px] flex items-center justify-center;
-  @apply hover:bg-black hover:border-black;
+  @apply text-[14px] capitalize leading-[1.2] text-white;
+  @apply flex items-center justify-center;
+  background-color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
   font-family: 'Manrope', sans-serif;
+  &:hover {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+  }
 }
 
 .cr-btn-secondary {
   @apply h-[40px] font-bold transition-all duration-300 ease-in-out py-[8px] px-[22px];
-  @apply text-[14px] capitalize leading-[1.2] bg-white text-[#64b496];
-  @apply border border-solid border-[#64b496] rounded-[5px] flex items-center justify-center;
-  @apply hover:text-white hover:bg-[#64b496] hover:border-[#64b496];
+  @apply text-[14px] capitalize leading-[1.2] bg-white;
+  @apply flex items-center justify-center;
+  color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
   font-family: 'Manrope', sans-serif;
+  &:hover {
+    color: white;
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+  }
 }

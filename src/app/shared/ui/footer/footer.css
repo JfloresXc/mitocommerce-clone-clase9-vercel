@@ -65,8 +65,10 @@
 
 .footer-link {
   @apply transition-all duration-300 ease-in-out relative text-sm leading-[26px] text-[#777];
-  @apply hover:text-[#64b496];
   font-family: 'Poppins', sans-serif;
+  &:hover {
+    color: var(--brand-primary);
+  }
 }
 
 /* ===== CONTACT INFO ===== */
@@ -119,7 +121,10 @@
 .social-link {
   @apply transition-all duration-300 ease-in-out w-[35px] h-[35px] flex items-center justify-center;
   @apply leading-[11px] bg-white border border-solid border-[#e1dfdf] rounded-[5px];
-  @apply text-black hover:text-[#64b496];
+  @apply text-black;
+  &:hover {
+    color: var(--brand-primary);
+  }
 }
 
 /* ===== COPYRIGHT ===== */
@@ -133,5 +138,5 @@
 }
 
 .copyright-text a {
-  @apply text-[#64b496];
+  color: var(--brand-primary);
 }

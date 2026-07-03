@@ -62,7 +62,8 @@
 }
 
 .price-value {
-  @apply text-lg font-semibold text-[#64b496];
+  @apply text-lg font-semibold;
+  color: var(--brand-primary);
 }
 
 .price-separator {
@@ -78,7 +79,8 @@
 }
 
 .range-active {
-  @apply absolute h-1.5 bg-[#64b496] rounded-full;
+  @apply absolute h-1.5 rounded-full;
+  background-color: var(--brand-primary);
 }
 
 .range-input {
@@ -86,8 +88,9 @@
 }
 
 .range-thumb {
-  @apply absolute w-4 h-4 bg-white border-2 border-[#64b496] rounded-full shadow-md;
+  @apply absolute w-4 h-4 bg-white border-2 rounded-full shadow-md;
   @apply -mt-1.5 cursor-pointer;
+  border-color: var(--brand-primary);
   transform: translateX(-50%);
   top: 0;
 }
@@ -98,13 +101,23 @@
 
 .price-button {
   @apply px-3 py-2 text-xs border border-gray-300 rounded;
-  @apply hover:border-[#64b496] hover:text-[#64b496] transition-colors;
+  @apply transition-colors;
+  &:hover {
+    border-color: var(--brand-primary);
+    color: var(--brand-primary);
+  }
 }
 
 .cr-button {
   @apply w-full h-[40px] font-bold transition-all duration-300 ease-in-out py-[8px] px-[22px];
-  @apply text-[14px] capitalize leading-[1.2] bg-[#64b496] text-white;
-  @apply border border-solid border-[#64b496] rounded-[5px] flex items-center justify-center;
-  @apply hover:bg-black hover:border-black;
+  @apply text-[14px] capitalize leading-[1.2] text-white;
+  @apply flex items-center justify-center;
+  background-color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+  border-radius: 8px;
   font-family: 'Manrope', sans-serif;
+  &:hover {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+  }
 }

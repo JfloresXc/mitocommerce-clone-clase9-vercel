@@ -10,5 +10,6 @@ import { ProductCard } from '../product-card/product-card';
 })
 export class ProductList {
   products = input<Product[]>([]);
+  isLoading = input<boolean>(false);
   productCount = computed(() => this.products().length);
 }

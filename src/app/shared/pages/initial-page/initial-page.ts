@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { PopularProducts } from 'app/modules/product/components/popular-products/popular-products';
 import { SeoService } from 'app/shared/services/seo.service';
 import { Hero } from 'app/shared/ui/hero/hero';
+import { CouponsSection } from 'app/shared/ui/coupons-section/coupons-section';
 
 @Component({
   selector: 'app-initial-page',
-  imports: [PopularProducts, Hero],
+  imports: [PopularProducts, Hero, CouponsSection],
   templateUrl: './initial-page.html',
   styles: ``,
 })

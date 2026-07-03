@@ -35,12 +35,16 @@
 }
 
 .menu-title {
-  @apply text-[18px] font-semibold text-[#64b496];
+  @apply text-[18px] font-semibold;
+  color: var(--brand-primary);
 }
 
 .cr-close {
   @apply relative border-0 text-[30px] leading-none text-[#999] bg-white cursor-pointer;
-  @apply hover:text-[#64b496] transition-colors duration-200;
+  @apply transition-colors duration-200;
+  &:hover {
+    color: var(--brand-primary);
+  }
 }
 
 /* ===== MENU ITEMS ===== */

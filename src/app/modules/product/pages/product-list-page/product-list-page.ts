@@ -20,7 +20,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
             <app-product-filters></app-product-filters>
           </div>
           <div class="w-2/3">
-            <app-product-list [products]="products()"></app-product-list>
+            <app-product-list [products]="products()" [isLoading]="productResource.isLoading()"></app-product-list>
           </div>
         </div>
       </div>

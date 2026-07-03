@@ -18,7 +18,9 @@
 }
 
 .active-grid {
-  @apply bg-[#64b496] text-white border-[#64b496];
+  @apply text-white;
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
 }
 
 .gridCol i {
@@ -67,11 +69,11 @@
 }
 
 .page-item.active {
-  @apply bg-[#64b496] text-white;
-}
-
-.page-item.active:hover {
-  @apply bg-[#64b496];
+  @apply text-white;
+  background-color: var(--brand-primary);
+  &:hover {
+    background-color: var(--brand-primary);
+  }
 }
 
 .page-link {

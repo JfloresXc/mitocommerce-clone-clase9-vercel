@@ -42,7 +42,8 @@
 }
 
 .thumbImg.active {
-  @apply border-[#64b496] shadow-sm;
+  @apply shadow-sm;
+  border-color: var(--brand-primary);
 }
 
 .thumbImg:not(.active) {
@@ -50,7 +51,8 @@
 }
 
 .thumbImg:not(.active):hover {
-  @apply border-[#64b496]/50 opacity-90;
+  @apply opacity-90;
+  border-color: color-mix(in srgb, var(--brand-primary) 50%, transparent);
 }
 
 .thumbImg img {

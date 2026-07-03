@@ -99,9 +99,25 @@
   font-style: normal;
 }
 
+:root {
+  --brand-primary: #3D5A45;      /* Verde Oliva */
+  --brand-dark: #1C2B20;         /* Bosque Profundo para texto */
+  --brand-muted: #8F9779;        /* Verde Sabio secundario */
+  --brand-accent: #D9A752;       /* Oro Ochre para estrellas/destaques */
+  --brand-bg: #FDFBF7;           /* Blanco Alabastro/Crema */
+  --brand-bg-alt: #F8F6F2;       /* Arena suave para fondos alternos */
+}
+
 @theme {
   --font-poppins: 'Poppins', sans-serif;
   --font-manrope: 'Manrope', sans-serif;
+  
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-bg-alt: var(--brand-bg-alt);
 }
 
 .font-Poppins {
@@ -140,6 +156,22 @@
 
 .dropdown-item {
   @apply transition-all duration-300 ease-in-out py-[7px] px-[20px] text-start bg-white relative capitalize;
-  @apply block w-full text-[#777] text-[13px] font-normal;
-  @apply hover:text-[#64b496] cursor-pointer;
+  @apply block w-full text-[#777] text-[13px] font-normal cursor-pointer;
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
+
+/* ===== SKELETON ANIMATION ===== */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    background-color: var(--brand-bg-alt);
+  }
+  50% {
+    background-color: color-mix(in srgb, var(--brand-muted) 20%, transparent);
+  }
+}
+
+.animate-skeleton {
+  animation: skeleton-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

@@ -1,5 +1,7 @@
 # Reglas Generales del Proyecto - MitoCommerce
 
+**MitoCommerce** es una aplicación de comercio electrónico (e-commerce) desarrollada como una tienda en línea moderna. Permite a los usuarios explorar catálogos de productos, gestionar un carrito de compras interactivo y administrar una lista de deseos (wishlist).
+
 Este archivo define las directrices arquitectónicas, estándares de codificación, estilos y flujos de trabajo que deben seguir tanto los desarrolladores como los agentes de IA (Claude/Gemini) que colaboren en este repositorio.
 
 ---
@@ -20,20 +22,6 @@ Este archivo define las directrices arquitectónicas, estándares de codificaci�
 - **`src/app/store/`:** Estado global de NgRx. Actualmente maneja el estado del carrito de compras (`store/cart/`).
 - **`src/app/core/`:** Elementos de infraestructura global y seguridad, tales como guards (`core/guards/`) e interceptores (`core/interceptors/`).
 - **Importaciones:** Usar rutas relativas dentro de un mismo módulo y alias configurados en `tsconfig.json` para recursos externos globales (como `@environments/*` o `@core/*`).
-
----
-
-## 3. Directrices de Desarrollo (Angular)
-
-- **Componentes Standalone:** Todos los componentes nuevos deben ser stand-alone y declarar explícitamente sus dependencias en la propiedad `imports` de su decorador `@Component`.
-- **Inyección de Dependencias (DI):** Utilizar la función `inject()` para la DI a nivel de clase en lugar del constructor convencional (ej. `store = inject(Store);`).
-- **Reactividad de Señales (Signals):**
-  - Preferir el uso de `signal()` para el estado local mutable.
-  - Usar `input<T>()` en lugar del decorador `@Input()`.
-  - Usar `computed(() => ...)` para derivar valores o estados calculados (como el conteo de estrellas en base al rating).
-  - Usar `toSignal` de `@angular/core/rxjs-interop` para transformar de forma reactiva flujos asíncronos de servicios (observables) a señales de Angular.
-- **Guards Funcionales:** Preferir guards basados en funciones (`CanActivateFn`, `CanMatchFn`, etc.) en lugar de guards basados en clases. Deben inyectar dependencias mediante la función `inject()`.
-- **Interceptores Funcionales:** Todos los interceptores HTTP deben ser funciones interceptoras en lugar de clases, registradas en `app.config.ts` utilizando `provideHttpClient(withInterceptors([...]))`.
 
 ---
 

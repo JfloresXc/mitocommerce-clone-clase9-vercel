@@ -20,7 +20,10 @@
 }
 
 .breadcrumb-link {
-  @apply text-[#7a7a7a] transition-all hover:text-[#64b496] no-underline;
+  @apply text-[#7a7a7a] transition-all no-underline;
+  &:hover {
+    color: var(--brand-primary);
+  }
 }
 
 .breadcrumb-separator {
@@ -53,7 +56,8 @@
 }
 
 .badge-icon {
-  @apply text-[24px] text-[#64b496];
+  @apply text-[24px];
+  color: var(--brand-primary);
 }
 
 .badge-title {
@@ -81,7 +85,8 @@
 }
 
 .tab-button.active {
-  @apply text-[#2b2b2d] border-[#64b496];
+  @apply text-[#2b2b2d];
+  border-bottom-color: var(--brand-primary);
 }
 
 .tab-button:hover:not(.active) {
@@ -115,7 +120,7 @@
 }
 
 .spec-value.highlight {
-  @apply text-[#64b496];
+  color: var(--brand-primary);
 }
 
 /* Related Products Section */

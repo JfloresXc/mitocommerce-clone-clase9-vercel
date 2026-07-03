@@ -1,8 +1,12 @@
 @reference "tailwindcss";
 
 .cr-product-card {
-  @apply h-full p-[12px] border border-solid border-[#e9e9e9] bg-white rounded-[5px];
-  @apply overflow-hidden flex-col max-[480px]:w-full;
+  @apply h-full p-[12px] border border-solid border-[#e9e9e9] bg-white rounded-[8px];
+  @apply overflow-hidden flex-col max-[480px]:w-full transition-all duration-300 ease-in-out;
+  &:hover {
+    border-color: var(--brand-primary);
+    box-shadow: 0 8px 24px rgba(61, 90, 69, 0.06);
+  }
 }
 
 .cr-product-image {
@@ -29,7 +33,12 @@
 
 .wishlist {
   @apply h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-white;
-  @apply border border-solid border-[#e9e9e9] rounded-[100%] cursor-pointer;
+  @apply border border-solid border-[#e9e9e9] rounded-[100%] cursor-pointer transition-all duration-300;
+  &:hover {
+    background-color: var(--brand-bg-alt);
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+  }
 }
 
 .wishlist i {
@@ -38,7 +47,12 @@
 
 .model-oraganic-product {
   @apply h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-white;
-  @apply border border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer;
+  @apply border border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer transition-all duration-300;
+  &:hover {
+    background-color: var(--brand-bg-alt);
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+  }
 }
 
 .model-oraganic-product i {
@@ -46,12 +60,21 @@
 }
 
 .cr-shopping-bag {
-  @apply h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0;
-  @apply bg-[#f7f7f8] border border-solid border-[#e9e9e9] rounded-[100%];
+  @apply h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 transition-all duration-300;
+  @apply bg-[#f7f7f8] border border-solid border-[#e9e9e9] rounded-[100%] cursor-pointer;
+  &:hover {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+  }
 }
 
 .cr-shopping-bag i {
-  @apply text-[#64b496];
+  color: var(--brand-primary);
+  @apply transition-all duration-300;
+}
+
+.cr-shopping-bag:hover i {
+  @apply text-white;
 }
 
 .cr-product-details {
@@ -67,7 +90,8 @@
 }
 
 .cr-star i {
-  @apply mx-px text-[15px] text-[#f5885f];
+  @apply mx-px text-[15px];
+  color: var(--brand-accent);
 }
 
 .cr-star p {
@@ -77,8 +101,11 @@
 
 .title {
   @apply transition-all duration-300 ease-in-out mb-[12px] text-[15px] font-medium leading-[24px];
-  @apply text-[#2b2b2d] hover:text-[#64b496] flex justify-center;
+  @apply text-[#2b2b2d] flex justify-center;
   font-family: 'Poppins', sans-serif;
+  &:hover {
+    color: var(--brand-primary);
+  }
 }
 
 .cr-price {
@@ -87,7 +114,8 @@
 }
 
 .new-price {
-  @apply text-[16px] leading-[1.75] max-[1200px]:text-[14px] font-bold text-[#64b496];
+  @apply text-[16px] leading-[1.75] max-[1200px]:text-[14px] font-bold;
+  color: var(--brand-primary);
   font-family: 'Poppins', sans-serif;
 }
 
