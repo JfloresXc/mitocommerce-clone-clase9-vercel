@@ -1,4 +1,4 @@
 export const environment = {
-  baseUrl: '',
+  baseUrl: 'https://eccommerce-api-p29d.onrender.com',
   geminiApiKey: ''
 };
