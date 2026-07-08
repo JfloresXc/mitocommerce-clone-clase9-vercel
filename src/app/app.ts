@@ -7,10 +7,11 @@ import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CartStorageActions } from './store/cart/actions';
 import { Footer } from './shared/ui/footer/footer';
+import { ChatBot } from '@shared/ui/chat-bot/chat-bot';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Sidebar, ShoppingCartSidebar, Alerts, RouterOutlet, Footer],
+  imports: [Navbar, Sidebar, ShoppingCartSidebar, Alerts, RouterOutlet, Footer, ChatBot],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
