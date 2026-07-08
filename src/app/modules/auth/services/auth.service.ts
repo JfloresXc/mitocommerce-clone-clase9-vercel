@@ -21,7 +21,7 @@ export class AuthService {
   isAuthenticated = computed(() => this.accessToken() !== null);
   router = inject(Router);
   alertService = inject(AlertService);
-  private authTimer?: any;
+  private authTimer?: null;
 
   constructor() {
     if (this.isBrowser) {
@@ -101,7 +101,7 @@ export class AuthService {
     if (this.isBrowser) sessionStorage.removeItem(AUTH_KEYS.accessToken);
   }
 
-  private getDecodedAccessToken(token: string): any {
+  private getDecodedAccessToken(token: string) {
     try {
       const parts = token.split('.');
       if (parts.length !== 3) return null;

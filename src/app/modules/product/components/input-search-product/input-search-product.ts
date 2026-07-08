@@ -1,6 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Product } from '../../interfaces/product';
 import { CategoryFeatureService } from 'app/modules/category/services/category-feature.service';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { ProductService } from '../../services/product.service';

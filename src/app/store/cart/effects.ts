@@ -16,7 +16,7 @@ export class CarEffects {
       return this.action.pipe(
         ofType(CartActions.addProduct, CartActions.restProduct, CartActions.clearProducts),
         withLatestFrom(this.store.select(selectProductsInCart)),
-        tap(([_, cart]) => {
+        tap(([, cart]) => {
           localStorage.setItem(CART_KEY, JSON.stringify(cart));
         }),
       );
@@ -30,7 +30,7 @@ export class CarEffects {
     () => {
       return this.action.pipe(
         ofType(CartStorageActions.loadProducts),
-        tap((_) => {
+        tap(() => {
           const productsInCart = localStorage.getItem(CART_KEY);
           if (productsInCart) {
             this.store.dispatch(

@@ -1,5 +1,5 @@
 @if (cartsidebarService.isOpen()) {
-<div class="cr-cart-overlay" (click)="cartsidebarService.close()" (keydown.enter)="cartsidebarService.close()"
+<div class="cr-cart-overlay" role="button" tabindex="0" aria-label="Cerrar carrito" (click)="cartsidebarService.close()" (keydown.enter)="cartsidebarService.close()"
   (keydown.escape)="cartsidebarService.close()" style="display: block"></div>
 
 <div class="cr-cart-view cr-cart-view-active">
