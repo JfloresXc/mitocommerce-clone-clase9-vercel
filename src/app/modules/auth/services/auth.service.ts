@@ -21,7 +21,7 @@ export class AuthService {
   isAuthenticated = computed(() => this.accessToken() !== null);
   router = inject(Router);
   alertService = inject(AlertService);
-  private authTimer?: null;
+  private authTimer?: ReturnType<typeof setTimeout>;
 
   constructor() {
     if (this.isBrowser) {
